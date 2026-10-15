@@ -1,0 +1,161 @@
+{
+  "model": "qwen2.5:0.5b",
+  "total_examples": 3,
+  "successful_generations": 3,
+  "schema_passes": 3,
+  "field_exact_matches": 4,
+  "total_fields": 21,
+  "field_exact_match_rate": 0.1905,
+  "results": [
+    {
+      "example": 1,
+      "input": "Machine M-101 had unusual vibration during the evening shift. The operator stopped the machine. Maintenance has not inspected it yet. The next shift must inspect the machine before restarting it. The exact vibration value was not recorded.",
+      "expected": {
+        "machine_id": "M-101",
+        "reported_issues": [
+          "Unusual vibration during the evening shift"
+        ],
+        "machine_status": "Stopped by operator; do not restart until inspected",
+        "completed_work": [
+          "Operator stopped the machine"
+        ],
+        "unresolved_issues": [
+          "Maintenance inspection is pending"
+        ],
+        "next_shift_actions": [
+          "Inspect the machine before restarting it"
+        ],
+        "missing_information": [
+          "Exact vibration value"
+        ]
+      },
+      "prediction": {
+        "machine_id": "M-101",
+        "reported_issues": [
+          "vibration",
+          "unusual"
+        ],
+        "machine_status": "Not specified in the note",
+        "completed_work": [
+          "Not specified in the note"
+        ],
+        "unresolved_issues": [
+          "Not specified in the note"
+        ],
+        "next_shift_actions": [
+          "Inspect the machine",
+          "Restart the machine"
+        ],
+        "missing_information": [
+          "Not specified in the note"
+        ]
+      },
+      "schema_valid": true,
+      "schema_errors": [],
+      "field_matches": {
+        "machine_id": true,
+        "reported_issues": false,
+        "unresolved_issues": false,
+        "missing_information": false,
+        "completed_work": false,
+        "next_shift_actions": false,
+        "machine_status": false
+      }
+    },
+    {
+      "example": 2,
+      "input": "Machine M-205 temperature reached 95 C. The operator reduced the load and informed the supervisor. The machine is running at reduced load. Maintenance will inspect it on the next shift. No temperature limit was supplied.",
+      "expected": {
+        "machine_id": "M-205",
+        "reported_issues": [
+          "Temperature reached 95 C"
+        ],
+        "machine_status": "Running at reduced load",
+        "completed_work": [
+          "Operator reduced the load",
+          "Supervisor was informed"
+        ],
+        "unresolved_issues": [
+          "Maintenance inspection is pending"
+        ],
+        "next_shift_actions": [
+          "Have maintenance inspect the machine"
+        ],
+        "missing_information": [
+          "Applicable temperature limit"
+        ]
+      },
+      "prediction": {
+        "machine_id": "M-205",
+        "reported_issues": [
+          "Temperature reached 95 C",
+          "Machine is running at reduced load"
+        ],
+        "machine_status": "Running at reduced load",
+        "completed_work": [],
+        "unresolved_issues": [],
+        "next_shift_actions": [],
+        "missing_information": [
+          "No temperature limit was supplied"
+        ]
+      },
+      "schema_valid": true,
+      "schema_errors": [],
+      "field_matches": {
+        "machine_id": true,
+        "reported_issues": false,
+        "unresolved_issues": false,
+        "missing_information": false,
+        "completed_work": false,
+        "next_shift_actions": false,
+        "machine_status": true
+      }
+    },
+    {
+      "example": 3,
+      "input": "Machine M-330 stopped because of a conveyor jam. Power was isolated, and the jam was removed by maintenance. The machine has not been restarted. The supervisor must approve restart. No approval has been received.",
+      "expected": {
+        "machine_id": "M-330",
+        "reported_issues": [
+          "Conveyor jam caused the machine to stop"
+        ],
+        "machine_status": "Stopped; power isolated; not restarted",
+        "completed_work": [
+          "Maintenance removed the jam"
+        ],
+        "unresolved_issues": [
+          "Supervisor restart approval is pending"
+        ],
+        "next_shift_actions": [
+          "Obtain supervisor approval before restarting"
+        ],
+        "missing_information": []
+      },
+      "prediction": {
+        "machine_id": "M-330",
+        "reported_issues": [
+          "Conveyor jam",
+          "Maintenance failed"
+        ],
+        "machine_status": "Not specified in the note",
+        "completed_work": [],
+        "unresolved_issues": [],
+        "next_shift_actions": [],
+        "missing_information": [
+          "No supervisor to approve restart"
+        ]
+      },
+      "schema_valid": true,
+      "schema_errors": [],
+      "field_matches": {
+        "machine_id": true,
+        "reported_issues": false,
+        "unresolved_issues": false,
+        "missing_information": false,
+        "completed_work": false,
+        "next_shift_actions": false,
+        "machine_status": false
+      }
+    }
+  ]
+}

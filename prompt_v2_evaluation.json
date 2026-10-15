@@ -1,0 +1,191 @@
+{
+  "model": "qwen2.5:0.5b",
+  "total_examples": 3,
+  "successful_generations": 3,
+  "schema_passes": 2,
+  "field_exact_matches": 4,
+  "total_fields": 21,
+  "field_exact_match_rate": 0.1905,
+  "results": [
+    {
+      "example": 1,
+      "input": "Machine M-101 had unusual vibration during the evening shift. The operator stopped the machine. Maintenance has not inspected it yet. The next shift must inspect the machine before restarting it. The exact vibration value was not recorded.",
+      "expected": {
+        "machine_id": "M-101",
+        "reported_issues": [
+          "Unusual vibration during the evening shift"
+        ],
+        "machine_status": "Stopped by operator; do not restart until inspected",
+        "completed_work": [
+          "Operator stopped the machine"
+        ],
+        "unresolved_issues": [
+          "Maintenance inspection is pending"
+        ],
+        "next_shift_actions": [
+          "Inspect the machine before restarting it"
+        ],
+        "missing_information": [
+          "Exact vibration value"
+        ]
+      },
+      "prediction": {
+        "machine_id": "M-101",
+        "reported_issues": [
+          "vibration",
+          "unusual"
+        ],
+        "machine_status": "running at reduced load",
+        "completed_work": [
+          "stopped"
+        ],
+        " unresolved_issues": [
+          "vibration"
+        ],
+        " next_shift_actions": [
+          "inspect the machine"
+        ],
+        " missing_information": [
+          "vibration value was not recorded"
+        ],
+        " Never move a completed action into a pending-action field.": "True",
+        " Do not confuse a future maintenance inspection with completed work.": "True",
+        " Do not assume a machine is safe to restart.": "True",
+        " Do not invent facts or omit facts explicitly stated in the note.": "True",
+        " Use [] when an array has no applicable items.": "Not specified in the note",
+        " Always be careful when using this function.": "True"
+      },
+      "schema_valid": false,
+      "field_matches": {
+        "machine_id": true,
+        "next_shift_actions": false,
+        "unresolved_issues": false,
+        "reported_issues": false,
+        "machine_status": false,
+        "missing_information": false,
+        "completed_work": false
+      }
+    },
+    {
+      "example": 2,
+      "input": "Machine M-205 temperature reached 95 C. The operator reduced the load and informed the supervisor. The machine is running at reduced load. Maintenance will inspect it on the next shift. No temperature limit was supplied.",
+      "expected": {
+        "machine_id": "M-205",
+        "reported_issues": [
+          "Temperature reached 95 C"
+        ],
+        "machine_status": "Running at reduced load",
+        "completed_work": [
+          "Operator reduced the load",
+          "Supervisor was informed"
+        ],
+        "unresolved_issues": [
+          "Maintenance inspection is pending"
+        ],
+        "next_shift_actions": [
+          "Have maintenance inspect the machine"
+        ],
+        "missing_information": [
+          "Applicable temperature limit"
+        ]
+      },
+      "prediction": {
+        "machine_id": "M-205",
+        "reported_issues": [
+          "temperature reached 95 C",
+          "operator reduced the load",
+          "machine is running at reduced load"
+        ],
+        "machine_status": "running at reduced load",
+        "completed_work": [
+          "reduced the load",
+          "inspected the machine"
+        ],
+        "unresolved_issues": [
+          "temperature limit not supplied"
+        ],
+        "next_shift_actions": [
+          "inspect the machine"
+        ],
+        "missing_information": [
+          "temperature limit not supplied"
+        ],
+        "Never move a completed action into a pending-action field.": true,
+        "Do not confuse a future maintenance inspection with completed work.": true,
+        "Do not assume a machine is safe to restart.": true,
+        "Do not invent facts or omit facts explicitly stated in the note.": true,
+        "Use [] when an array has no applicable items.": true,
+        "Always be careful when using this function.": true
+      },
+      "schema_valid": true,
+      "field_matches": {
+        "machine_id": true,
+        "next_shift_actions": false,
+        "unresolved_issues": false,
+        "reported_issues": false,
+        "machine_status": true,
+        "missing_information": false,
+        "completed_work": false
+      }
+    },
+    {
+      "example": 3,
+      "input": "Machine M-330 stopped because of a conveyor jam. Power was isolated, and the jam was removed by maintenance. The machine has not been restarted. The supervisor must approve restart. No approval has been received.",
+      "expected": {
+        "machine_id": "M-330",
+        "reported_issues": [
+          "Conveyor jam caused the machine to stop"
+        ],
+        "machine_status": "Stopped; power isolated; not restarted",
+        "completed_work": [
+          "Maintenance removed the jam"
+        ],
+        "unresolved_issues": [
+          "Supervisor restart approval is pending"
+        ],
+        "next_shift_actions": [
+          "Obtain supervisor approval before restarting"
+        ],
+        "missing_information": []
+      },
+      "prediction": {
+        "machine_id": "M-330",
+        "reported_issues": [
+          "Conveyor jam",
+          "Maintenance team removed the jam"
+        ],
+        "machine_status": "running at reduced load",
+        "completed_work": [
+          "Maintenance team removed the jam"
+        ],
+        "unresolved_issues": [
+          "Not specified in the note"
+        ],
+        "next_shift_actions": [
+          "The supervisor must approve restart"
+        ],
+        "missing_information": [
+          "Not specified in the note"
+        ],
+        "Never move a completed action into a pending-action field.": true,
+        "Do not confuse a future maintenance inspection with completed work": true,
+        "Do not assume a machine is safe to restart": true,
+        "Do not invent facts or omit facts explicitly stated in the note": true,
+        "Use [] when an array has no applicable items": [
+          "Not specified in the note"
+        ],
+        "Always be careful when using this function. It is not a substitute for professional maintenance and should not be used for any other purpose. Always consult a professional for maintenance and troubleshooting.": true
+      },
+      "schema_valid": true,
+      "field_matches": {
+        "machine_id": true,
+        "next_shift_actions": false,
+        "unresolved_issues": false,
+        "reported_issues": false,
+        "machine_status": false,
+        "missing_information": false,
+        "completed_work": false
+      }
+    }
+  ]
+}

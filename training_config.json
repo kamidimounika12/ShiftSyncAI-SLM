@@ -1,0 +1,16 @@
+{
+  "model_name": "Qwen/Qwen2.5-0.5B",
+  "training_file": "train.jsonl",
+  "validation_file": "validation.jsonl",
+  "test_file": "test.jsonl",
+  "output_dir": "/kaggle/working/shiftsync-lora",
+  "max_length": 512,
+  "max_answer_length": 192,
+  "lora_rank": 4,
+  "lora_alpha": 8,
+  "lora_dropout": 0.05,
+  "epochs": 1,
+  "batch_size": 1,
+  "gradient_accumulation_steps": 8,
+  "learning_rate": 0.0001
+}

@@ -1,0 +1,5 @@
+[
+  "src/test_safety_guardrails.py::test_inspection_must_be_before_restart",
+  "src/test_safety_guardrails.py::test_pending_supervisor_approval",
+  "src/test_safety_guardrails.py::test_stopped_machine_and_restart_restriction"
+]
